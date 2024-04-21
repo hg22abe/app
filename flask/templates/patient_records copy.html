@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <img src="/images/MaheenLogo.png" alt="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Record - Sight Saver</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+    header {
+      background-color: #9be7ff; 
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      max-height: 100px; 
+    }
+
+    .content {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .record-form {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .record-form label,
+    .record-form input,
+    .record-form textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .record-form button {
+      padding: 10px 20px;
+      background-color: #9be7ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+
+    <h1>Sight Saver</h1>
+  </header>
+  
+  <div class="content">
+    <h2>Patient Record Form</h2>
+    <form class="record-form">
+      <label for="patientName">Patient Name:</label>
+      <input type="text" id="patientName" value="{{ value1 }}" readonly required>
+
+      <label for="patientAge">Patient Age:</label>
+      <input type="number" id="patientAge" value="{{ value2 }}" readonly required>
+
+      <label for="patientAddress">Patient Address:</label>
+      <textarea id="patientAddress" rows="4"> {{ value3 }}</textarea>
+      <button type="submit">Submit</button>
+      
+
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Sight Saver</p>
+  </footer>
+
+</body>
+</html>

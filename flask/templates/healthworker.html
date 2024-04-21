@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Worker Homepage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff; 
+    }
+
+    header {
+      background-color: #9be7ff; 
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      max-height: 100px; 
+    }
+
+    h2 {
+      font-size: 18px;
+      text-align: center;
+      color: #333;
+      margin-top: 20px; 
+    }
+
+    nav {
+      background-color: #333;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 15px 30px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+
+    .content {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .content img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <image src="{{ url_for('static', filename='images_proj/MaheenLogo.png')}}" alt="sight saver">
+    <h1>Sight Saver</h1>
+    <h2>Health Worker Homepage</h2> 
+  </header>
+  <form action="/workerlogin/do" method="get">
+    <nav>
+      <ul>
+        <li><a href="/workerlogin/do/manage">Appointment Management</a></li>
+        <li><a href="/workerlogin/do/info">New Patient</a></li>
+        <li><a href="/workerlogin/do/patientrecords">Patient Records</a></li>
+      </ul>
+    </nav>
+  </form>
+  
+
+  <div class="content">
+    <img src="{{ url_for('static', filename='images_proj/eyescan.jpg')}}" alt="Descriptive Image">
+    <p>Efficiently manage and schedule appointments to improve patient care.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Sight Saver</p>
+  </footer>
+</body>
+</html>

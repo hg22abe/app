@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Homepage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+    header {
+      background-color: #9be7ff; 
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      max-height: 100px; 
+    }
+
+    nav {
+      background-color: #333;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block; 
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 15px 30px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+
+    nav ul li a i {
+      margin-right: 8px; 
+    }
+
+    .content {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .content img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='images_proj/MaheenLogo.png')}}" alt="Clinic Logo">
+    <h1>Sight Saver</h1>
+  </header>
+   <form action="/patientlogin" method="post"></form>
+  <nav>
+    <ul>
+      <li><a href="/patientlogin/logged/book"><i class="fa fa-calendar-plus"></i>Book Appointment</a></li>
+      <li><a href="/patientlogin/logged/view"><i class="fa fa-calendar-check"></i>View Appointments</a></li>
+      <li><a href="/patientlogin/logged/eyecare"><i class="fa fa-eye"></i>Eye Care Tips</a></li>
+      <li><a href="/patientlogin/logged/contact"><i class="fa fa-envelope"></i>Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <img src="{{ url_for('static', filename='images_proj/eyescan.jpg')}}" alt="Descriptive Alt Text">
+    <p>Sight Insight is driven by a mission of compassion and innovation. Thanks to generous donations from the public and aid charities, we've successfully developed a revolutionary tool to assess patients' eyesight in challenging conditions with limited resources. Our focus remains on implementing practical solutions for eye health assessment in lower-income regions where traditional facilities and expert consultations are scarce. Through groundbreaking technology, we've created a lens that attaches to smartphones, enabling Fundus Photography—a feat previously only achievable with expensive, bulky equipment. We're dedicated to optimizing and refining the user experience, bringing us one step closer to our goal of accessible eye care for all.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Sight Saver</p>
+  </footer>
+</body>
+</html>

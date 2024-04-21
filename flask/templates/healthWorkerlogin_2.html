@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Log In</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ <style>
+   body {
+     margin: 0;
+     padding: 0;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background: linear-gradient(to right, #ffffff, #9be7ff);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     min-height: 100vh;
+     color: #333;
+   }
+   .logo {
+     max-width: 150px;
+     margin-bottom: 20px;
+   }
+   .content-container {
+     width: 90%;
+     max-width: 400px;
+     text-align: center;
+     padding: 40px;
+     background-color: white;
+     border-radius: 25px;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+     margin-top: 0px;
+   }
+   h1 {
+     font-size: 2.5em;
+     color: #005a9c;
+     margin-bottom: 0.5em;
+   }
+   input[type="text"],
+   input[type="password"] {
+     width: calc(100% - 20px);
+     padding: 15px;
+     margin: 10px 0;
+     border: 1px solid #ccc;
+     border-radius: 20px;
+     box-sizing: border-box;
+   }
+   .button-container,
+   .social-login-container {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+   }
+   .button {
+     background-color: #99e7fff4;
+     color: white;
+     padding: 15px 30px;
+     border: none;
+     border-radius: 20px;
+     font-size: 1em;
+     text-transform: uppercase;
+     font-weight: bold;
+     cursor: pointer;
+     transition: background-color 0.3s;
+   }
+   .button:hover {
+     background-color: #88d7ee;
+   }
+   .social-login-button {
+     border: 2px solid #99e7fff4;
+     color: #005a9c;
+     background-color: white;
+     padding: 15px 30px;
+     border-radius: 20px;
+     transition: background-color 0.3s;
+   }
+   .social-login-button:hover {
+     background-color: #99e7fff4;
+     color: white;
+   }
+   .forgot-password {
+     font-size: 1em;
+     color: #005a9c;
+     text-decoration: none;
+     margin-top: 20px;
+   }
+   .forgot-password a {
+     color: #99e7fff4;
+     text-decoration: none;
+   }
+   .forgot-password a:hover {
+     text-decoration: underline;
+   }
+   .sign-up-container {
+     font-size: 1em;
+     margin-top: 20px;
+   }
+   .sign-up-container a {
+     color: #005a9c;
+     text-decoration: none;
+   }
+   .sign-up-container a:hover {
+     text-decoration: underline;
+   }
+ </style>
+</head>
+<body>
+ 
+ <img src="{{ url_for('static', filename='images_proj/MaheenLogo.png')}}" alt="sight saver"" alt="Sight Saver Logo" class="logo">
+
+   <form action="/workerlogin/do" method="post">
+   
+  <div class="content-container">
+    <h1>Health Worker Log In</h1>
+    <input type="text" name="Username" placeholder="username or email" />
+    <input type="password" name="Password" placeholder="Password" />
+    <div class="button-container">
+      <a href="Healthworker.html" class="button">Log In</a>
+    </div>
+    <p class="forgot-password"><a href="#">Forgot your password?</a></p>
+    <div class="social-login-container">
+      <button class="social-login-button"><i class="fab fa-google"></i> Google</button>
+      <button class="social-login-button"><i class="fab fa-facebook-f"></i> Facebook</button>
+    </div>
+    <div class="sign-up-container">
+      <p>Don't have an account? <a href="/workerlogin/workerssignup">Sign up</a></p>
+    </div>
+  </div>
+ </form>
+ 
+ 
+</body>
+</html>

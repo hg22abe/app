@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .appointment {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .appointment p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <form action="/workerlogin/do/manage">
+        <div class="container">
+            <h1>Appointment Management</h1>
+            <div id="appointmentList">
+                {% for appointment in appointments %}
+                    <div class="appointment">
+                        <h3>{{ appointment[0] }}</h3>
+                        <p>Date: {{ appointment[2] }}</p>
+                        <p>Time: {{ appointment[1] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+    
+    
+
+    
+</body>
+</html>

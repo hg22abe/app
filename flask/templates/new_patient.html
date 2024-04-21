@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Information Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffffff, #9be7ff);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #fefefe;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    input[type="date"],
+    input[type="time"] {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .fa, .fas {
+    color: #9be7ff; /* This will change the color of all Font Awesome icons to blue */
+}
+
+    .input-icon {
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon i {
+      margin-right: 10px;
+    }
+
+    .danger {
+      color: red;
+    }
+
+    button[type="submit"],
+    #resetFormBtn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #04cdd4;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover,
+    #resetFormBtn:hover {
+      background-color: #9be7ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Patient Information Form</h1>
+  
+  <form id="patientForm" action="/workerlogin/do/info/pred" method="post">
+    <div class="form-group">
+      <label for="phone-number" class="input-icon"><i class="fas fa-user"></i>Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required>
+    </div>
+    <div class="form-group">
+      <label for="phone-number" class="input-icon"><i class="fas fa-user"></i>Phone Number:</label>
+      <input type="text" id="phone-number" name="phone-number" required>
+    </div>
+    <div class="form-group">
+      <label for="address" class="input-icon"><i class="fas fa-user"></i>Address:</label>
+      <input type="text" id="address" name="address" required>
+    </div>
+    <div class="form-group">
+      <label for="age" class="input-icon"><i class="fas fa-birthday-cake"></i>Age:</label>
+      <input type="number" id="age" name="age" required>
+    </div>
+    <div class="form-group">
+      <label for="gender" class="input-icon"><i class="fas fa-venus-mars"></i>Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="diabetes" class="input-icon"><i class="fas fa-venus-mars"></i>Type of Diabetes:</label>
+      <select id="diabetes" name="diabetes" required>
+        <option value="type1">Type 1</option>
+        <option value="type2">Type 2</option>
+        <option value="GD">Gestational Diabetes</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="weight" class="input-icon"><i class="fas fa-weight"></i>Weight (kg):</label>
+      <input type="number" id="weight" name="weight" required>
+      <span id="weightWarning" class="danger"></span>
+    </div>
+    <div class="form-group">
+      <label for="height" class="input-icon"><i class="fas fa-arrows-alt-v"></i>Height (cm):</label>
+      <input type="number" id="height" name="height" required>
+    </div>
+    <div class="form-group">
+      <label for="fever" class="input-icon"><i class="fas fa-thermometer"></i>Fever (°C):</label>
+      <input type="number" id="fever" name="fever" step="0.1" required>
+      <span id="feverWarning" class="danger"></span>
+    </div>
+    <div class="form-group">
+      <label for="bloodPressure" class="input-icon"><i class="fas fa-heartbeat"></i>Blood Pressure:</label>
+      <input type="text" id="bloodPressure" name="bloodPressure" required>
+      <span id="bloodPressureWarning" class="danger"></span>
+    </div>
+    <div class="form-group">
+      <label for="sugarLevel" class="input-icon"><i class="fas fa-tint"></i>Sugar Level (mmol/L):</label>
+      <input type="number" id="sugarLevel" name="sugarLevel" step="0.1" required>
+      <span id="sugarLevelWarning" class="danger"></span>
+    </div>
+    <div class="form-group">
+      <label for="appointmentDate" class="input-icon"><i class="far fa-calendar-alt"></i>Appointment Date:</label>
+      <input type="date" id="appointmentDate" name="appointmentDate" required>
+    </div>
+    <div class="form-group">
+      <label for="appointmentTime" class="input-icon"><i class="far fa-clock"></i>Appointment Time:</label>
+      <input type="time" id="appointmentTime" name="appointmentTime" required>
+    </div>
+    
+    <div class="button-container">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <script>
+    // Function to update warning messages based on input values
+    function updateWarnings() {
+      var feverInput = parseFloat(document.getElementById("fever").value);
+      var bloodPressureInput = document.getElementById("bloodPressure").value.split("/");
+      var systolic = parseInt(bloodPressureInput[0]);
+      var diastolic = parseInt(bloodPressureInput[1]);
+      var weightInput = parseFloat(document.getElementById("weight").value);
+      var sugarLevelInput = parseFloat(document.getElementById("sugarLevel").value);
+
+      // Reset warnings
+      document.getElementById("feverWarning").innerText = "";
+      document.getElementById("bloodPressureWarning").innerText = "";
+      document.getElementById("weightWarning").innerText = "";
+      document.getElementById("sugarLevelWarning").innerText = "";
+
+      // Set warnings if input values exceed or are below normal levels
+      if (feverInput > 38) {
+        document.getElementById("feverWarning").innerText = "Fever exceeds normal level!";
+      } else if (feverInput < 36.5) {
+        document.getElementById("feverWarning").innerText = "Fever is below normal level!";
+      }
+
+      if (systolic > 140 || diastolic > 90) {
+        document.getElementById("bloodPressureWarning").innerText = "Blood Pressure exceeds normal level!";
+      } else if (systolic < 90 || diastolic < 60) {
+        document.getElementById("bloodPressureWarning").innerText = "Blood Pressure is below normal level!";
+      }
+
+      if (weightInput > 100) {
+        document.getElementById("weightWarning").innerText = "Weight exceeds normal level!";
+      } else if (weightInput < 50) {
+        document.getElementById("weightWarning").innerText = "Weight is below normal level!";
+      }
+
+      if (sugarLevelInput > 7) {
+        document.getElementById("sugarLevelWarning").innerText = "Sugar Level exceeds normal level!";
+      } else if (sugarLevelInput < 3.5) {
+        document.getElementById("sugarLevelWarning").innerText = "Sugar Level is below normal level!";
+      }
+    }
+
+    // Add event listeners to input fields to trigger warning updates
+    document.getElementById("fever").addEventListener("input", updateWarnings);
+    document.getElementById("bloodPressure").addEventListener("input", updateWarnings);
+    document.getElementById("weight").addEventListener("input", updateWarnings);
+    document.getElementById("sugarLevel").addEventListener("input", updateWarnings);
+  </script>
+</body>
+</html>

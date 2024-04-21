@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Patient Registration - Sight Saver</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ <style>
+   body {
+     margin: 0;
+     padding: 0;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background-color: #99e7fff4;
+     color: #333;
+   }
+   .content-container {
+     width: 100%;
+     max-width: 600px;
+     text-align: center;
+     padding: 20px;
+     background-color: white;
+     border-radius: 15px;
+     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+     margin: auto;
+     margin-top: 50px;
+   }
+   .logo {
+     max-width: 200px;
+     margin: 0 auto;
+   }
+   h1 {
+     font-size: 2.5em;
+     color: #005a9c;
+     margin-bottom: 0.5em;
+   }
+   p {
+     font-size: 1.2em;
+     margin-bottom: 2em;
+     color: #666;
+   }
+   .form-container {
+     margin-top: 20px;
+   }
+   .input-group {
+     margin-bottom: 20px;
+     text-align: left;
+   }
+   .input-group label {
+     display: block;
+     font-size: 1.1em;
+     margin-bottom: 5px;
+     color: #333;
+   }
+   .input-group input {
+     width: 100%;
+     padding: 10px;
+     font-size: 1em;
+     border-radius: 5px;
+     border: 1px solid #ccc;
+   }
+   .button {
+     background-color: #99e7fff4;
+     color: white;
+     padding: 15px 30px;
+     border: none;
+     border-radius: 8px;
+     font-size: 1.2em;
+     text-transform: uppercase;
+     font-weight: bold;
+     cursor: pointer;
+     transition: background-color 0.3s, transform 0.2s;
+   }
+   .button:hover {
+     background-color: #88d7ee;
+     transform: translateY(-3px);
+     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   }
+ </style>
+</head>
+<body>
+ <div class="content-container">
+   <img src="{{ url_for('static', filename='images_proj/MaheenLogo.png')}}" alt="Sight Saver Logo" class="logo">
+   <h1>Register as a Patient</h1>
+   <p>Please fill out the form below to register:</p>
+   <form class="form-container" action="/patientlogin/patientsignup" method="post">
+     <div class="input-group">
+       <label for="full_name">Full Name:</label>
+       <input type="text" id="full_name" name="full_name" required>
+     </div>
+     <div class="input-group">
+       <label for="username">User Name:</label>
+       <input type="text" id="username" name="username" required>
+     </div>
+     <div class="input-group">
+       <label for="email">Email:</label>
+       <input type="email" id="email" name="email" required>
+     </div>
+     <div class="input-group">
+       <label for="password">Password:</label>
+       <input type="password" id="password" name="password" required>
+     </div>
+     <div class="input-group">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+      </div>
+     <a href="/patientlogin/patientsignup"><button type="submit" class="button">Register</button></a>
+   </form>
+ </div>
+</body>
+</html>

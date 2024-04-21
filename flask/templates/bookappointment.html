@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Make an Appointment</title>
+   <style>
+       body {
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           margin: 0;
+           padding: 0;
+           background: linear-gradient(to right, #6dd5fa, #9be7ff);
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           height: 100vh;
+           color: #333;
+       }
+ 
+       .calendar-container {
+           width: 100%;
+           max-width: 600px;
+           background: #fff;
+           padding: 20px;
+           border-radius: 15px;
+           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+           overflow: hidden;
+       }
+ 
+       table {
+           width: 100%;
+           border-collapse: collapse;
+           margin-bottom: 20px;
+       }
+ 
+       table th {
+           background-color: #99e7fff4;
+           color: white;
+           padding: 10px;
+           text-align: left;
+       }
+ 
+       table td {
+           border: 1px solid #ddd;
+           padding: 8px;
+           cursor: pointer;
+       }
+ 
+       table td:hover, .time-slot:hover, .book-appointment-button:hover {
+           background-color: #88d7ee;
+           color: white;
+       }
+ 
+       .selected, .selected-time {
+           background-color: #007bff;
+           color: white;
+       }
+ 
+       .time-slots {
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: space-between;
+           padding: 10px;
+           background-color: #f2f2f2;
+           border-radius: 5px;
+       }
+ 
+       .time-slot {
+           background-color: white;
+           padding: 10px 20px;
+           border-radius: 5px;
+           margin: 5px;
+           cursor: pointer;
+           flex: 1;
+           text-align: center;
+           min-width: 50px;
+       }
+ 
+       .book-appointment-button {
+           background-color: #005a9c;
+           color: white;
+           padding: 15px 30px;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+           font-size: 16px;
+           transition: background 0.3s;
+           width: 100%;
+       }
+ 
+       h2 {
+           color: #000000;
+           text-align: center;
+           margin: 20px 0;
+       }
+   </style>
+</head>
+<body>
+    <h2>Make an Appointment - September 2024</h2>
+ 
+<div class="calendar-container">
+   <div class="calendar">
+       
+   </div>
+   <div class="time-slots">
+     
+   </div>
+
+   <form method="post" action="/patientlogin/logged/book">
+    <input type="hidden" name="selected_day" id="selected_day">
+    <input type="hidden" name="selected_time" id="selected_time"> 
+    <button type="submit" class="book-appointment-button">Book Appointment</button>
+   </form>
+
+</div>
+ 
+<script>
+   function selectDate(day) {
+       document.querySelectorAll('.date').forEach(function(dateElement) {
+           dateElement.classList.remove('selected');
+       });
+ 
+       var selectedDate = document.querySelector('.date[data-day="' + day + '"]');
+       selectedDate.classList.add('selected');
+       document.getElementById('selected_day').value = day;
+   }
+ 
+   function selectTimeSlot(timeSlotElement) {
+       document.querySelectorAll('.time-slot').forEach(function(slotElement) {
+           slotElement.classList.remove('selected-time');
+       });
+ 
+       timeSlotElement.classList.add('selected-time');
+       document.getElementById('selected_time').value = timeSlotElement.textContent;
+   }
+ 
+   function generateCalendar() {
+       var calendar = document.querySelector('.calendar');
+       var days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+       var table = document.createElement('table');
+ 
+       var header = table.insertRow();
+       var daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+       daysOfWeek.forEach(function(day) {
+           var th = document.createElement('th');
+           th.textContent = day;
+           header.appendChild(th);
+       });
+ 
+       var row = table.insertRow();
+       for (var i = 0; i < days.length; i++) {
+           if (i % 7 === 0 && i !== 0) {
+               row = table.insertRow();
+           }
+           var cell = row.insertCell();
+           cell.textContent = days[i];
+           cell.className = 'date';
+           cell.setAttribute('data-day', days[i]);
+           cell.setAttribute('onclick', 'selectDate(' + days[i] + ')');
+       }
+ 
+       calendar.appendChild(table);
+   }
+ 
+   function generateTimeSlots() {
+       var slots = ['12:30-13:00', '13:30-14:00', '09:30-10:00', '15:00-15:30', '10:15-10:45', '18:00-18:30'];
+       var timeSlotsContainer = document.querySelector('.time-slots');
+       slots.forEach(function(slot) {
+           var btn = document.createElement('button');
+           btn.className = 'time-slot';
+           btn.textContent = slot;
+           btn.setAttribute('onclick', 'selectTimeSlot(this)');
+           timeSlotsContainer.appendChild(btn);
+       });
+   }
+ 
+   window.onload = function() {
+       generateCalendar();
+       generateTimeSlots();
+   };
+</script>
+</body>
+</html>

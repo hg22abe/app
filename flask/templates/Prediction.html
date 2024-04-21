@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-out;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* CSS animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload the Retina Image</h1>
+    <form action="/workerlogin/do/info/pred/records" method="post" enctype="multipart/form-data">
+
+   
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="file" accept="image/*" required>
+
+        <div class="button-container">
+           <button class="button">Submit</button>
+       </div>
+    </form>
+
+    <script>
+        // JavaScript code for handling form submission
+        document.getElementById('patientForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevents the default form submission
+
+            // Accessing form elements
+        
+            var photoFile = document.getElementById('photo').files[0];
+
+            // You can perform further actions here, like sending the data to a server
+
+            // For demonstration purposes, log the values to the console
+            
+            console.log('Photo File:', photoFile);
+
+            // You can implement AJAX or other methods to send data to the server
+            // For a basic example, you can send the data to the console
+        });
+    </script>
+</body>
+</html>
